@@ -1,0 +1,14 @@
+// src/lib/prisma.ts
+import { PrismaClient } from '@/generated/prisma'; // use correct output path
+
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined;
+};
+
+export const prisma =
+  globalForPrisma.prisma ??
+  new PrismaClient({
+    log: ['query'], // optional
+  });
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;

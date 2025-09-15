@@ -71,64 +71,6 @@ A mini full-stack application for managing buyer leads. Capture, view, and manag
    ```bash
    git clone https://github.com/devkartik773/BUYER_LEAD.git
    cd BUYER_LEAD
-Lead Magnet CRM 🧲
-A mini-CRM to capture, track, and manage real estate buyer leads with a focus on usability, robust validation, and data management. Built with the latest Next.js App Router and a type-safe stack.
-
-Live Demo 🚀
-You can view a live demo of the application here:
-https://your-vercel-deploy-url.vercel.app
-
-(Optional: Replace with your actual Vercel deployment URL)
-
-<br>
-
-A clean, filterable dashboard to manage all your buyer leads.
-
-<br>
-
-The lead creation form with intelligent, conditional validation.
-
-<br>
-
-Effortlessly import up to 200 leads via CSV, with per-row error reporting.
-
-Features ✨
-Core Functionality
-Create & Manage Leads: A dedicated page (/buyers/new) with comprehensive forms for capturing new leads.
-
-Filterable Dashboard: A dynamic dashboard (/buyers) with real pagination, filters (by city, status, etc.), and a debounced search for names, emails, and phones.
-
-View & Edit: Detailed lead pages (/buyers/[id]) to view and edit all information. Includes a robust optimistic update mechanism with concurrency control to prevent data overwrite conflicts.
-
-History Log: A a detailed log of all changes made to a lead, showing before and after values and who made the change.
-
-Data & Validation
-Client & Server-side Validation: All forms are validated on both the client and server using Zod to ensure data integrity and security.
-
-CSV Import/Export: Bulk import new leads from a CSV file with granular error reporting. Export the current filtered list to a CSV with a single click.
-
-Ownership & Access Control: Users can only edit and delete their own leads (ownerId check). All logged-in users can view all leads.
-
-Technical Highlights
-Next.js 14 App Router: Utilizes server components for efficient data fetching and rendering.
-
-Drizzle ORM: A lightweight and type-safe ORM for interacting with the Postgres database.
-
-Postgres via Supabase: A reliable, managed database backend that simplifies setup.
-
-Vercel Deployment: Easily deployed and hosted on Vercel for a seamless developer experience.
-
-Getting Started 🚀
-Prerequisites
-Node.js (v18 or higher)
-
-npm or pnpm
-
-1. Clone the repository
-Bash
-
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
 
 2. Setup Environment Variables
 Create a .env file in the root directory and add the following variables. You can get these from your Supabase project dashboard.

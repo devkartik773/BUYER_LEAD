@@ -1,10 +1,10 @@
 import React from "react";
-import { prisma } from "@/lib/prisma";
+import {prisma} from "@/lib/prisma";
 import Link from "next/link";
 import { format } from "date-fns";
 import { Suspense } from "react";
 import SearchAndFilters from "@/components/SearchAndFilters";
-import ExportButton from "@/components/ExportButton"; // Corrected import
+import ExportButton from "@/components/ExportButton";
 
 // Define the props for our page component, which will receive URL search parameters
 type BuyersPageProps = {
@@ -40,23 +40,13 @@ async function BuyersTable({ searchParams }: BuyersPageProps) {
         where.timeline = searchParams.timeline;
     }
     if (searchParams.search) {
-        const searchTerm = searchParams.search.toLowerCase();
+        const searchTerm = Array.isArray(searchParams.search)
+            ? searchParams.search[0].toLowerCase()
+            : searchParams.search.toLowerCase();
         where.OR = [
-            {
-                fullName: {
-                    contains: searchTerm,
-                },
-            },
-            {
-                phone: {
-                    contains: searchTerm,
-                },
-            },
-            {
-                email: {
-                    contains: searchTerm,
-                },
-            },
+            { fullName: { contains: searchTerm } },
+            { phone: { contains: searchTerm } },
+            { email: { contains: searchTerm } },
         ];
     }
 
@@ -122,9 +112,7 @@ async function BuyersTable({ searchParams }: BuyersPageProps) {
                 </tbody>
             </table>
 
-            {/* Pagination Controls */}
             <div className="flex justify-between items-center p-4">
-                {/* Previous Page Link */}
                 <Link
                     href={
                         (() => {
@@ -138,12 +126,10 @@ async function BuyersTable({ searchParams }: BuyersPageProps) {
                     Previous
                 </Link>
 
-                {/* Current Page Info */}
                 <span>
                     Page {page} of {totalPages}
                 </span>
 
-                {/* Next Page Link */}
                 <Link
                     href={
                         (() => {
@@ -161,19 +147,19 @@ async function BuyersTable({ searchParams }: BuyersPageProps) {
     );
 }
 
-// The main page component that will render the search/filter form and the table
 export default function BuyersPage({ searchParams }: BuyersPageProps) {
     return (
         <main className="container mx-auto p-6">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold">Buyer Leads</h1>
                 <div className="flex space-x-4">
-                    <ExportButton /> {/* The corrected component */}
+                    <ExportButton />
                     <Link href="/buyers/new" className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
                         + New Lead
                     </Link>
                 </div>
             </div>
+            
             <Suspense fallback={<div>Loading filters...</div>}>
                 <SearchAndFilters />
             </Suspense>

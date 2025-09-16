@@ -25,6 +25,7 @@ const eslintConfig = [
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-this-alias": "off",
     },
+    "ignorePatterns": ["src/generated/*"]
   },
 ];
 

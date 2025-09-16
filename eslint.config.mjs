@@ -20,7 +20,7 @@ const eslintConfig = [
       "next-env.d.ts",
       "*.js",
       "*.ts",
-      "src/generated/**", // ✅ moved here
+      "src/generated/**", // ✅ fully ignore generated Prisma client
     ],
     rules: {
       "@typescript-eslint/no-require-imports": "off",

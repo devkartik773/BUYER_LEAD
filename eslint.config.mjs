@@ -19,13 +19,13 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
       "*.js",
-      "*.ts"
+      "*.ts",
+      "src/generated/**", // ✅ moved here
     ],
     rules: {
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-this-alias": "off",
     },
-    "ignorePatterns": ["src/generated/*"]
   },
 ];
 
